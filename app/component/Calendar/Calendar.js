@@ -14,7 +14,7 @@ function CalendarDays(props) {
             <span
               className={
                 "calendar-days-select "+
-                (day.day.isSame(props.selectedDay) ? "active" : "")
+                (day.day.isSame(props.selectedDay, 'day') ? "active" : "")
               }
               onClick={props.selectDate.bind(this, day.day)}>
               { day.day.format('D') }
@@ -36,11 +36,25 @@ class Calendar extends React.Component {
     this.selectDate = this.selectDate.bind(this);
     this.setNextMonth = this.setNextMonth.bind(this);
     this.setPrevMonth = this.setPrevMonth.bind(this);
+    this.updateCalendar = this.updateCalendar.bind(this);
   }
 
   selectDate(day, e) {
+    if (
+      this.state.currentMoment.isBefore(day, 'month') ||
+      this.state.currentMoment.isAfter(day, 'month')
+    ) {
+      return this.updateCalendar(day);
+    }
     this.setState({
       selectedDay: day.format("YYYY-MM-DD"),
+    });
+  }
+
+  updateCalendar(newDate) {
+    this.setState({
+      currentMoment: newDate,
+      selectedDay: newDate.format("YYYY-MM-DD"),
     });
   }
 

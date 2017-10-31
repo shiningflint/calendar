@@ -80,8 +80,6 @@ img {
   border-radius: 12px;
   width: 70%;
   padding: 4px 0; }
-  .calendar-days-select:hover {
-    background-color: #464c5a; }
   .calendar-days-select.active {
     background-color: #414755;
     box-shadow: inset 0 1px 1px 1px rgba(0, 0, 0, 0.2);
