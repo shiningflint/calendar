@@ -1,4 +1,5 @@
 import React from 'react';
+import CalendarPage from './Calendar/CalendarPage';
 
 class App extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class App extends React.Component {
   render() {
     return(
       <div>
-        <h1 className="header">Bananas!</h1>
+        <CalendarPage/>
       </div>
     )
   }

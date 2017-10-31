@@ -35,8 +35,85 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+img {
+  vertical-align: middle;
+  max-width: 100%; }
+
+.body {
+  background-color: #515765;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Hiragino Kaku Gothic Pro", Meiryo, "Malgun Gothic", "Helvetica Neue", sans-serif; }
+
 .header {
   color: blue;
   font-size: 1.414em; }
+
+.calendar {
+  max-width: 640px;
+  margin: 16px auto 0 auto;
+  color: #969CAC; }
+
+.calendar-grid,
+.calendar-days-label {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%; }
+
+.calendar-grid-item,
+.calendar-days-item {
+  flex: 0 14.28571%;
+  text-align: center;
+  padding: 16px 0; }
+
+.calendar-grid-item.nextMonth,
+.calendar-grid-item.prevMonth {
+  color: #676d7c; }
+
+.calendar-month-wrap {
+  position: relative;
+  height: 32px; }
+
+.calendar-arrow-left {
+  position: absolute;
+  left: 8px;
+  top: 0;
+  height: 32px;
+  width: 32px;
+  z-index: 2; }
+
+.calendar-arrow-right {
+  position: absolute;
+  right: 8px;
+  top: 0;
+  height: 32px;
+  width: 32px;
+  z-index: 2; }
+
+.calendar-arrow-left__img {
+  opacity: 0.4;
+  transform: rotate(90deg);
+  cursor: pointer; }
+
+.calendar-arrow-right__img {
+  opacity: 0.4;
+  transform: rotate(-90deg);
+  cursor: pointer; }
+
+.calendar-month-name {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  font-size: 20px;
+  z-index: 1; }
 
 /*# sourceMappingURL=index.css.map */
