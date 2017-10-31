@@ -6,10 +6,20 @@ const Days = ["Mo","Tu","We","Th","Fr","Sa","Su"];
 class Calendar extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      selectedDay: "",
+    };
+    this.selectDate = this.selectDate.bind(this);
   }
 
   renderDay(day) {
     return day.format('D')
+  }
+
+  selectDate(day, e) {
+    this.setState({
+      selectedDay: day.format("YYYY-MM-DD"),
+    });
   }
 
   render() {
@@ -46,7 +56,13 @@ class Calendar extends React.Component {
               <div
                 key={`day-${i}`}
                 className={`calendar-grid-item ${day.classNames || ''}`}>
-                { this.renderDay(day.day) }
+                <span
+                  className={
+                    "calendar-days-select "+(day.day.isSame(this.state.selectedDay) ? "active" : "")
+                  }
+                  onClick={this.selectDate.bind(this, day.day)}>
+                  { this.renderDay(day.day) }
+                </span>
               </div>
             )
           })}
