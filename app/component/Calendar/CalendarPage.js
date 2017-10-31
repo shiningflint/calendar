@@ -1,5 +1,6 @@
 import React from 'react';
 import Calendar from './Calendar';
+import TimePicker from './TimePicker';
 
 class CalendarPage extends React.Component {
   constructor(props) {
@@ -8,8 +9,8 @@ class CalendarPage extends React.Component {
 
   render() {
     return(
-      <div>
-        <Calendar/>
+      <div className="calendar-page">
+        <TimePicker/>
       </div>
     )
   }

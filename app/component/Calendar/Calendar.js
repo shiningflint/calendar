@@ -74,7 +74,7 @@ class Calendar extends React.Component {
     let currentObjects = createDateObjects(this.state.currentMoment);
 
     return(
-      <div className="calendar">
+      <div>
         <div className="calendar-month-wrap">
           <div className="calendar-arrow-left">
             <img
