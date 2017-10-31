@@ -3,17 +3,39 @@ import moment from 'moment';
 import createDateObjects from './createDateObjects';
 const Days = ["Mo","Tu","We","Th","Fr","Sa","Su"];
 
+function CalendarDays(props) {
+  return(
+    <div className={`calendar-grid ${props.monthClass}`}>
+      {props.currentObjects.map((day, i) => {
+        return (
+          <div
+            key={`day-${i}`}
+            className={`calendar-grid-item ${day.classNames || ''}`}>
+            <span
+              className={
+                "calendar-days-select "+
+                (day.day.isSame(props.selectedDay) ? "active" : "")
+              }
+              onClick={props.selectDate.bind(this, day.day)}>
+              { day.day.format('D') }
+            </span>
+          </div>
+        )
+      })}
+    </div>
+  );
+}
+
 class Calendar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentMoment: moment(),
       selectedDay: "",
     };
     this.selectDate = this.selectDate.bind(this);
-  }
-
-  renderDay(day) {
-    return day.format('D')
+    this.setNextMonth = this.setNextMonth.bind(this);
+    this.setPrevMonth = this.setPrevMonth.bind(this);
   }
 
   selectDate(day, e) {
@@ -22,9 +44,20 @@ class Calendar extends React.Component {
     });
   }
 
+  setNextMonth(e) {
+    this.setState((prevState) => ({
+      currentMoment: prevState.currentMoment.add(1, 'months'),
+    }));
+  }
+
+  setPrevMonth(e) {
+    this.setState((prevState) => ({
+      currentMoment: prevState.currentMoment.subtract(1, 'months'),
+    }));
+  }
+
   render() {
-    let theMoment = moment();
-    let potatoes = createDateObjects(theMoment);
+    let currentObjects = createDateObjects(this.state.currentMoment);
 
     return(
       <div className="calendar">
@@ -32,15 +65,17 @@ class Calendar extends React.Component {
           <div className="calendar-arrow-left">
             <img
               src={require('../../assets/arrow.svg')}
-              className="calendar-arrow-left__img"/>
+              className="calendar-arrow-left__img"
+              onClick={this.setPrevMonth}/>
           </div>
           <div className="calendar-arrow-right">
             <img
               src={require('../../assets/arrow.svg')}
-              className="calendar-arrow-right__img"/>
+              className="calendar-arrow-right__img"
+              onClick={this.setNextMonth}/>
           </div>
           <div className="calendar-month-name">
-            {theMoment.format("MMMM YYYY")}
+            {this.state.currentMoment.format("MMMM YYYY")}
           </div>
         </div>
         <div className="calendar-days-label">
@@ -50,23 +85,11 @@ class Calendar extends React.Component {
               className="calendar-days-item">{label}</div>
           ))}
         </div>
-        <div className="calendar-grid">
-          {potatoes.map((day, i) => {
-            return (
-              <div
-                key={`day-${i}`}
-                className={`calendar-grid-item ${day.classNames || ''}`}>
-                <span
-                  className={
-                    "calendar-days-select "+(day.day.isSame(this.state.selectedDay) ? "active" : "")
-                  }
-                  onClick={this.selectDate.bind(this, day.day)}>
-                  { this.renderDay(day.day) }
-                </span>
-              </div>
-            )
-          })}
-        </div>
+        <CalendarDays
+          monthClass="current"
+          currentObjects={currentObjects}
+          selectedDay={this.state.selectedDay}
+          selectDate={this.selectDate}/>
       </div>
     )
   }
