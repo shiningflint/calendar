@@ -26,23 +26,33 @@ function CalendarDays(props) {
   );
 }
 
+function CalendarArrows(props) {
+  return(
+    <div className={props.wrapperClassName}>
+      <img
+        src={props.src}
+        className={props.imgClassName}
+        onClick={props.setPrevMonth}/>
+    </div>
+  )
+}
+
 function Calendar(props) {
   let currentObjects = createDateObjects(props.currentMoment);
+  let arrowimg = require('../../assets/arrow.svg');
   return(
     <div>
       <div className="calendar-month-wrap">
-        <div className="calendar-arrow-left">
-          <img
-            src={require('../../assets/arrow.svg')}
-            className="calendar-arrow-left__img"
-            onClick={props.setPrevMonth}/>
-        </div>
-        <div className="calendar-arrow-right">
-          <img
-            src={require('../../assets/arrow.svg')}
-            className="calendar-arrow-right__img"
-            onClick={props.setNextMonth}/>
-        </div>
+        <CalendarArrows
+          wrapperClassName="calendar-arrow-left"
+          src={arrowimg}
+          imgClassName="calendar-arrow-left__img"
+          setPrevMonth={props.setPrevMonth}/>
+        <CalendarArrows
+          wrapperClassName="calendar-arrow-right"
+          src={arrowimg}
+          imgClassName="calendar-arrow-right__img"
+          setPrevMonth={props.setNextMonth}/>
         <div className="calendar-month-name">
           {props.currentMoment.format("MMMM YYYY")}
         </div>
