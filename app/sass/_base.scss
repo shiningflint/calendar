@@ -135,7 +135,7 @@ $arrow-size: 32px;
   overflow: hidden;
   border: 1px solid #414755;
   border-radius: 4px;
-  width: 80%;
+  width: calc(100% - 32px);
   margin: 0 auto 16px auto;
 }
 .calendar-toggle-item {

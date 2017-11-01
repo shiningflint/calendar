@@ -15,32 +15,25 @@ function ToggleItem(props) {
   )
 }
 
-class CalendarToggle extends React.Component {
-  constructor(props) {
-    super(props);
-
-  }
-
-  render() {
-    let calendar = (this.props.toggle === "calendar" ? "active" : "");
-    let time = (this.props.toggle === "time" ? "active" : "");
-    return(
-      <div className="calendar-toggle-wrapper">
-        <ToggleItem
-          label="Date"
-          name="calendar"
-          src={require("../../assets/calendar.svg")}
-          toggle={calendar}
-          click={this.props.click} />
-        <ToggleItem
-          label="Time"
-          name="time"
-          src={require("../../assets/clock.svg")}
-          toggle={time}
-          click={this.props.click} />
-      </div>
-    )
-  }
+function CalendarToggle(props) {
+  let calendar = (props.toggle === "calendar" ? "active" : "");
+  let time = (props.toggle === "time" ? "active" : "");
+  return(
+    <div className="calendar-toggle-wrapper">
+      <ToggleItem
+        label="Date"
+        name="calendar"
+        src={require("../../assets/calendar.svg")}
+        toggle={calendar}
+        click={props.click} />
+      <ToggleItem
+        label="Time"
+        name="time"
+        src={require("../../assets/clock.svg")}
+        toggle={time}
+        click={props.click} />
+    </div>
+  )
 }
 
 export default CalendarToggle;
