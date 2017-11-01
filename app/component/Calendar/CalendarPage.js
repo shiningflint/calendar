@@ -11,7 +11,11 @@ class CalendarPage extends React.Component {
     return(
       <div className="calendar-page">
         <Calendar/>
-        <TimePicker/>
+        <TimePicker
+          maxHour={23}
+          minHour={0}
+          maxMinute={59}
+          minMinute={0}/>
       </div>
     )
   }

@@ -30,14 +30,16 @@ class HorizontalSlider extends React.Component {
     const { value } = this.state
     return(
       <div className="slider">
-        <SliderPlugin
-          min={0}
-          max={23}
-          value={value}
-          onChangeStart={this.handleChangeStart}
-          onChange={this.handleChange}
-          onChangeComplete={this.handleChangeComplete}/>
-        <div className="value">{value}</div>
+        <p className="slider-label">{this.props.label}</p>
+        <div className="slider-wrapper">
+          <SliderPlugin
+            min={this.props.min}
+            max={this.props.max}
+            value={this.props.value}
+            onChangeStart={this.handleChangeStart}
+            onChange={this.props.change}
+            onChangeComplete={this.handleChangeComplete}/>
+        </div>
       </div>
     )
   }
