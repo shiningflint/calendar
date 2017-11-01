@@ -3,6 +3,7 @@ import moment from 'moment';
 import CalendarToggle from './CalendarToggle';
 import Calendar from './Calendar';
 import TimePicker from './TimePicker';
+import ShowTime from './ShowTime';
 
 class CalendarPage extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class CalendarPage extends React.Component {
     this.state = {
       toggle: "calendar",
       currentMoment: moment(),
-      selectedDay: moment()
+      selectedDay: moment().format("YYYY-MM-DD"),
     };
     this.handleToggle = this.handleToggle.bind(this);
     this.selectDate = this.selectDate.bind(this);
@@ -76,6 +77,7 @@ class CalendarPage extends React.Component {
           toggle={this.state.toggle}
           click={this.handleToggle}/>
         {content}
+        <ShowTime selectedDay={this.state.selectedDay}/>
       </div>
     )
   }
