@@ -1,4 +1,5 @@
 import React from 'react';
+import Slider from '../Slider';
 
 class TimePicker extends React.Component {
   constructor(props) {
@@ -7,8 +8,8 @@ class TimePicker extends React.Component {
 
   render() {
     return(
-      <div>
-        <input type="range" className="time-slider" />
+      <div style={{paddingTop: '64px'}}>
+        <Slider/>
       </div>
     )
   }

@@ -10,6 +10,7 @@ class CalendarPage extends React.Component {
   render() {
     return(
       <div className="calendar-page">
+        <Calendar/>
         <TimePicker/>
       </div>
     )
