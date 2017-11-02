@@ -11,6 +11,7 @@ function SetTimeDate(props) {
         onMouseLeave={removeActive}
         onTouchStart={setActive}
         onTouchEnd={removeActive}>
+        <img src={require('../../assets/checked.svg')} className="set-img" />
         <span className="set-text">{props.label}</span>
       </button>
     </div>
