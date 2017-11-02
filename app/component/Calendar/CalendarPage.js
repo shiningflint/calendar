@@ -4,6 +4,11 @@ import CalendarToggle from './CalendarToggle';
 import Calendar from './Calendar';
 import TimePicker from './TimePicker';
 import ShowTime from './ShowTime';
+import { maxminNumber } from '../Helpers';
+const minHour = 0;
+const maxHour = 23;
+const minMinute = 0;
+const maxMinute = 59;
 
 class CalendarPage extends React.Component {
   constructor(props) {
@@ -12,12 +17,18 @@ class CalendarPage extends React.Component {
       toggle: "calendar",
       currentMoment: moment(),
       selectedDay: moment().format("YYYY-MM-DD"),
+      hour: moment().hour(),
+      minute: moment().minute(),
     };
     this.handleToggle = this.handleToggle.bind(this);
     this.selectDate = this.selectDate.bind(this);
     this.setNextMonth = this.setNextMonth.bind(this);
     this.setPrevMonth = this.setPrevMonth.bind(this);
     this.updateCalendar = this.updateCalendar.bind(this);
+    this.changeHour = this.changeHour.bind(this);
+    this.changeMinute = this.changeMinute.bind(this);
+    this.changeSliderHour = this.changeSliderHour.bind(this);
+    this.changeSliderMinute = this.changeSliderMinute.bind(this);
   }
 
   handleToggle(e) {
@@ -57,6 +68,24 @@ class CalendarPage extends React.Component {
     }));
   }
 
+  changeHour(e) {
+    let theHour = maxminNumber(parseInt(e.target.value), minHour, maxHour);
+    this.setState({hour: theHour});
+  }
+
+  changeMinute(e) {
+    let theMinute = maxminNumber(parseInt(e.target.value), minMinute, maxMinute);
+    this.setState({minute: theMinute});
+  }
+
+  changeSliderHour(value) {
+    this.setState({hour: value});
+  }
+
+  changeSliderMinute(value) {
+    this.setState({minute: value});
+  }
+
   render() {
     let content = <Calendar
       currentMoment={this.state.currentMoment}
@@ -66,10 +95,16 @@ class CalendarPage extends React.Component {
       setNextMonth={this.setNextMonth}/>;
     if (this.state.toggle === "time") {
       content = <TimePicker
-        maxHour={23}
-        minHour={0}
-        maxMinute={59}
-        minMinute={0}/>
+        hour={this.state.hour}
+        minute={this.state.minute}
+        maxHour={maxHour}
+        minHour={minHour}
+        maxMinute={maxMinute}
+        minMinute={minMinute}
+        changeHour={this.changeHour}
+        changeMinute={this.changeMinute}
+        changeSliderHour={this.changeSliderHour}
+        changeSliderMinute={this.changeSliderMinute}/>
     }
     return(
       <div className="calendar-page">
