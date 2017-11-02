@@ -7,9 +7,10 @@ class ShowTime extends React.Component {
 
   render() {
     return(
-      <div className="show-time-wrapper">
-        {this.props.selectedDay}
-      </div>
+      <p className="show-time-wrapper">
+        <span className="show-date">{this.props.selectedDay}</span>
+        <span className="show-time">{this.props.time}</span>
+      </p>
     )
   }
 }

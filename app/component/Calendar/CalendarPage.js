@@ -4,6 +4,7 @@ import CalendarToggle from './CalendarToggle';
 import Calendar from './Calendar';
 import TimePicker from './TimePicker';
 import ShowTime from './ShowTime';
+import SetTimeDate from './SetTimeDate';
 import { maxminNumber } from '../Helpers';
 const minHour = 0;
 const maxHour = 23;
@@ -112,7 +113,11 @@ class CalendarPage extends React.Component {
           toggle={this.state.toggle}
           click={this.handleToggle}/>
         {content}
-        <ShowTime selectedDay={this.state.selectedDay}/>
+        <ShowTime
+          selectedDay={this.state.selectedDay}
+          time={String(this.state.hour)+":"+String(this.state.minute)}/>
+        <SetTimeDate
+          label="Set time &amp; date"/>
       </div>
     )
   }

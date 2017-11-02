@@ -12,4 +12,12 @@ function maxminNumber(val, min, max) {
   }
 }
 
-export { selectAll, maxminNumber };
+function setActive(elm) {
+  return elm.currentTarget.classList.add('active');
+}
+
+function removeActive(elm) {
+  return elm.currentTarget.classList.remove('active')
+}
+
+export { selectAll, maxminNumber, setActive, removeActive };
