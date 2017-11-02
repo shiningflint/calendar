@@ -188,9 +188,13 @@ $arrow-size: 32px;
   cursor: pointer;
   box-shadow: 0 3px 0 0 #0c818e, 0 4px 4px 0 rgba(0,0,0,0.4);
   transition: transform 0.1s, box-shadow 0.1s;
+  -webkit-tap-highlight-color: transparent;
   &.active {
     box-shadow: none;
     transform: translateY(3px);
+  }
+  &:focus {
+    outline: none;
   }
 }
 .set-img {
