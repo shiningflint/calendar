@@ -8,7 +8,6 @@ class SchedulePage extends React.Component {
 
   render() {
     let days = [];
-    console.log(this.props.dates);
     for (var key in this.props.dates) {
       days.push(<ScheduleCard
         key={key}
