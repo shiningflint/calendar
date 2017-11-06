@@ -43,6 +43,9 @@ function Calendar(props) {
   return(
     <div>
       <div className="calendar-month-wrap">
+        <div className="calendar-month-name">
+          {props.currentMoment.format("MMMM YYYY")}
+        </div>
         <CalendarArrows
           wrapperClassName="calendar-arrow-left"
           src={arrowimg}
@@ -53,9 +56,6 @@ function Calendar(props) {
           src={arrowimg}
           imgClassName="calendar-arrow-right__img"
           setPrevMonth={props.setNextMonth}/>
-        <div className="calendar-month-name">
-          {props.currentMoment.format("MMMM YYYY")}
-        </div>
       </div>
       <div className="calendar-days-label">
         {Days.map((label, i) => (
