@@ -7,13 +7,19 @@ class SchedulePage extends React.Component {
   }
 
   render() {
+    let days = [];
+    console.log(this.props.dates);
+    for (var key in this.props.dates) {
+      days.push(<ScheduleCard
+        key={key}
+        date={key}
+        schedules={this.props.dates[key]}/>);
+    }
     return(
       <div className="schedule-page">
         <h1 className="schedule-title">Schedules</h1>
         <div>
-          <ScheduleCard date="2017-05-05"/>
-          <ScheduleCard date="2017-05-10"/>
-          <ScheduleCard date="2017-05-11"/>
+          {days}
         </div>
       </div>
     )

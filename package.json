@@ -39,6 +39,8 @@
     "webpack-dev-server": "^2.9.3"
   },
   "dependencies": {
+    "lodash.groupby": "^4.6.0",
+    "lodash.sortby": "^4.7.0",
     "moment": "^2.19.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",

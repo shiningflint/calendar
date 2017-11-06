@@ -1,7 +1,19 @@
 import React from 'react';
 import CalendarPage from './Calendar/CalendarPage';
 import SchedulePage from './Schedule/SchedulePage';
+import sortBy from 'lodash.sortby';
+import groupBy from 'lodash.groupby';
 const Dates = [
+  {
+    "date": "2017-05-10",
+    "time": "10:00",
+    "text": "Takao san time!"
+  },
+  {
+    "date": "2017-05-10",
+    "time": "14:00",
+    "text": "Reach Takao san"
+  },
   {
     "date": "2017-05-05",
     "time": "14:00",
@@ -22,6 +34,11 @@ const Dates = [
     "time": "10:00",
     "text": "Go to the immigration office"
   },
+  {
+    "date": "2016-05-06",
+    "time": "10:00",
+    "text": "Go to the immigration office"
+  },
 ];
 
 class App extends React.Component {
@@ -30,9 +47,11 @@ class App extends React.Component {
   }
 
   render() {
+    let dateSorted = sortBy(Dates, (e) => { return e.date })
+    let dateReduced = groupBy(dateSorted, (e) => { return e.date });
     return(
       <div>
-        <SchedulePage/>
+        <SchedulePage dates={ dateReduced }/>
       </div>
     )
   }

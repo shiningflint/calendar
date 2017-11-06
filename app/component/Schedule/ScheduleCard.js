@@ -15,20 +15,16 @@ class ScheduleCard extends React.Component {
   }
 
   render() {
+    let items = this.props.schedules.map((val, index) => {
+      return (<ScheduleItem
+        key={index}
+        time={val.time}
+        text={val.text}/>);
+    });
     return(
       <div className="schedule-card">
         <div className="schedule-date">{this.props.date}</div>
-        <ul className="schedule-ul">
-          <ScheduleItem
-            text="Meet my friend at Roppongi hills"
-            time="14:00"/>
-          <ScheduleItem
-            text="Buy the ceiling light"
-            time="15:00"/>
-          <ScheduleItem
-            text="Have dinner"
-            time="18:00"/>
-        </ul>
+        <ul className="schedule-ul">{items}</ul>
       </div>
     )
   }
