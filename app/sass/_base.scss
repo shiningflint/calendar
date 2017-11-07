@@ -194,6 +194,17 @@ $arrow-size: 32px;
   display: inline-block;
 }
 
+// TEXT INPUT
+.text-input-wrap {
+  margin-top: 16px;
+}
+.text-input {
+  border: none;
+  width: 100%;
+  padding: 4px;
+  border-radius: 4px;
+}
+
 // SET BUTTON
 .set-wrapper {
   text-align: center;

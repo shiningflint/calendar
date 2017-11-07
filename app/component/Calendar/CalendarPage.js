@@ -5,6 +5,7 @@ import Calendar from './Calendar';
 import TimePicker from './TimePicker';
 import ShowTime from './ShowTime';
 import SetTimeDate from './SetTimeDate';
+import TextInput from './TextInput';
 import { maxminNumber } from '../Helpers';
 const minHour = 0;
 const maxHour = 23;
@@ -116,8 +117,9 @@ class CalendarPage extends React.Component {
         <ShowTime
           selectedDay={this.state.selectedDay}
           time={String(this.state.hour)+":"+String(this.state.minute)}/>
+        <TextInput/>
         <SetTimeDate
-          label="Set time &amp; date"/>
+          label="Set schedule"/>
       </div>
     )
   }
