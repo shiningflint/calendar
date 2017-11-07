@@ -23,7 +23,9 @@ class ScheduleCard extends React.Component {
     });
     return(
       <div className="schedule-card">
-        <div className="schedule-date">{this.props.date}</div>
+        <div className="schedule-date">
+          <span className="schedule-date__text">{this.props.date}</span>
+        </div>
         <ul className="schedule-ul">{items}</ul>
       </div>
     )

@@ -210,13 +210,14 @@ $arrow-size: 32px;
   margin-bottom: 32px;
 }
 .schedule-page {
+  position: relative;
   padding: 8px;
 }
 .schedule-card {
   position: relative;
-  background-color: #737d94;
+  background-color: #61697b;
   color: #d8dce6;
-  padding: 24px 8px 16px 8px;
+  padding: 32px 8px 16px 8px;
   box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.3);
   margin-bottom: 32px;
   &:last-child {
@@ -227,13 +228,16 @@ $arrow-size: 32px;
   position: absolute;
   top: -16px;
   left: 8px;
-  background-color: #bd6a6a;
+  background-color: #9a5f5f;
   padding: 4px 8px;
   box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.3);
   font-size: 1.414em;
 }
+.schedule-date__text {
+  color: rgba(255,255,255,0.7);
+}
 .schedule-item {
-  border-bottom: 1px solid #909bb3;
+  border-bottom: 1px solid #767e92;
   padding-bottom: 16px;
   margin-bottom: 16px;
   &:last-child {
@@ -245,4 +249,21 @@ $arrow-size: 32px;
 .schedule-item__time {
   font-size: 0.707em;
   text-align: right;
+}
+.schedule-add-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: #13a8b9;
+  border-radius: 20px;
+  box-shadow: 0 3px 0 0 #0c818e, 0 4px 4px 0 rgba(0,0,0,0.4);
+  transition: transform 0.1s, box-shadow 0.1s;
+  &.active {
+    box-shadow: none;
+    transform: translateY(3px);
+  }
+}
+.schedule-add-btn__img {
+  width: 40px;
+  height: 40px;
 }
