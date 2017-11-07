@@ -10,7 +10,8 @@ function SetTimeDate(props) {
         onMouseUp={removeActive}
         onMouseLeave={removeActive}
         onTouchStart={setActive}
-        onTouchEnd={removeActive}>
+        onTouchEnd={removeActive}
+        onClick={props.submitSchedule.bind(this, props.text, props.date, props.time)}>
         <img src={require('../../assets/checked.svg')} className="set-img" />
         <span className="set-text">{props.label}</span>
       </button>

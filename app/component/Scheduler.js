@@ -38,6 +38,7 @@ class Scheduler extends React.Component {
       calendarShow: false,
     };
     this.toggleCalendar = this.toggleCalendar.bind(this);
+    this.submitSchedule = this.submitSchedule.bind(this);
   }
 
   toggleCalendar() {
@@ -46,13 +47,22 @@ class Scheduler extends React.Component {
     });
   }
 
+  submitSchedule(text, date, time) {
+    console.log(text);
+    console.log(date);
+    console.log(time);
+    if(this.state.calendarShow === true) {
+      this.setState({ calendarShow: false });
+    }
+  }
+
   render() {
     let dateSorted = sortBy(Dates, (e) => { return e.date })
     let dateReduced = groupBy(dateSorted, (e) => { return e.date });
     let calendar = "";
     if (this.state.calendarShow) {
       calendar = <div className="calendar-page-modal">
-        <CalendarPage/>
+        <CalendarPage submitSchedule = {this.submitSchedule}/>
         <img
           src={require("../assets/plus.svg")}
           className="calendar-page-close"

@@ -21,6 +21,7 @@ class CalendarPage extends React.Component {
       selectedDay: moment().format("YYYY-MM-DD"),
       hour: moment().hour(),
       minute: moment().minute(),
+      text: "",
     };
     this.handleToggle = this.handleToggle.bind(this);
     this.selectDate = this.selectDate.bind(this);
@@ -31,6 +32,7 @@ class CalendarPage extends React.Component {
     this.changeMinute = this.changeMinute.bind(this);
     this.changeSliderHour = this.changeSliderHour.bind(this);
     this.changeSliderMinute = this.changeSliderMinute.bind(this);
+    this.updateText = this.updateText.bind(this);
   }
 
   handleToggle(e) {
@@ -88,6 +90,12 @@ class CalendarPage extends React.Component {
     this.setState({minute: value});
   }
 
+  updateText(e) {
+    this.setState({
+      text: e.currentTarget.value,
+    });
+  }
+
   render() {
     let content = <Calendar
       currentMoment={this.state.currentMoment}
@@ -108,6 +116,7 @@ class CalendarPage extends React.Component {
         changeSliderHour={this.changeSliderHour}
         changeSliderMinute={this.changeSliderMinute}/>
     }
+    let time = (String(this.state.hour)+":"+String(this.state.minute));
     return(
       <div className="calendar-page">
         <CalendarToggle
@@ -117,9 +126,13 @@ class CalendarPage extends React.Component {
         <ShowTime
           selectedDay={this.state.selectedDay}
           time={String(this.state.hour)+":"+String(this.state.minute)}/>
-        <TextInput/>
+        <TextInput text={this.state.text} updateText={this.updateText} />
         <SetTimeDate
-          label="Set schedule"/>
+          label="Set schedule"
+          submitSchedule={this.props.submitSchedule}
+          text={this.state.text}
+          date={this.state.selectedDay}
+          time={time}/>
       </div>
     )
   }
