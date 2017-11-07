@@ -14,21 +14,6 @@ var Dates = [
     "time": "14:00",
     "text": "Reach Takao san"
   },
-  {
-    "date": "2017-05-05",
-    "time": "14:00",
-    "text": "Go shopping"
-  },
-  {
-    "date": "2017-05-05",
-    "time": "13:00",
-    "text": "Do Laundry"
-  },
-  {
-    "date": "2017-05-05",
-    "time": "17:00",
-    "text": "Play"
-  },
 ];
 
 class Scheduler extends React.Component {
@@ -48,9 +33,11 @@ class Scheduler extends React.Component {
   }
 
   submitSchedule(text, date, time) {
-    console.log(text);
-    console.log(date);
-    console.log(time);
+    let newObject = {}
+    newObject.date = date;
+    newObject.time = time;
+    newObject.text = text;
+    Dates.push(newObject);
     if(this.state.calendarShow === true) {
       this.setState({ calendarShow: false });
     }
