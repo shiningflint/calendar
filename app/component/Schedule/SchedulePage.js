@@ -41,6 +41,18 @@ class SchedulePage extends React.Component {
         <div>
           {days}
         </div>
+        <div className="schedule-clearbtn-wrap">
+          <button
+            className="set-button"
+            onMouseDown={setActive}
+            onMouseUp={removeActive}
+            onMouseLeave={removeActive}
+            onTouchStart={setActive}
+            onTouchEnd={removeActive}
+            onClick={this.props.clearSchedules}>
+            clear schedules
+          </button>
+        </div>
       </div>
     )
   }

@@ -3,27 +3,17 @@ import CalendarPage from './Calendar/CalendarPage';
 import SchedulePage from './Schedule/SchedulePage';
 import sortBy from 'lodash.sortby';
 import groupBy from 'lodash.groupby';
-var Dates = [
-  {
-    "date": "2017-05-10",
-    "time": "10:00",
-    "text": "Takao san time!"
-  },
-  {
-    "date": "2017-05-10",
-    "time": "14:00",
-    "text": "Reach Takao san"
-  },
-];
 
 class Scheduler extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       calendarShow: false,
+      dates: JSON.parse(localStorage.getItem("dates")),
     };
     this.toggleCalendar = this.toggleCalendar.bind(this);
     this.submitSchedule = this.submitSchedule.bind(this);
+    this.clearSchedules = this.clearSchedules.bind(this);
   }
 
   toggleCalendar() {
@@ -34,17 +24,33 @@ class Scheduler extends React.Component {
 
   submitSchedule(text, date, time) {
     let newObject = {}
+    let newArr = [];
     newObject.date = date;
     newObject.time = time;
     newObject.text = text;
-    Dates.push(newObject);
+    if (this.state.dates === null) {
+      newArr = [newObject];
+    } else {
+      newArr = [...this.state.dates, newObject];
+    }
+    localStorage.setItem("dates", JSON.stringify(newArr));
+    this.setState({
+      dates: newArr,
+    });
     if(this.state.calendarShow === true) {
       this.setState({ calendarShow: false });
     }
   }
 
+  clearSchedules() {
+    localStorage.removeItem("dates");
+    this.setState({
+      dates: [],
+    });
+  }
+
   render() {
-    let dateSorted = sortBy(Dates, (e) => { return e.date })
+    let dateSorted = sortBy(this.state.dates, (e) => { return e.date })
     let dateReduced = groupBy(dateSorted, (e) => { return e.date });
     let calendar = "";
     if (this.state.calendarShow) {
@@ -60,7 +66,8 @@ class Scheduler extends React.Component {
       <div className="app-wrapper">
         <SchedulePage
           dates={ dateReduced }
-          toggleCalendar={this.toggleCalendar}/>
+          toggleCalendar={this.toggleCalendar}
+          clearSchedules={this.clearSchedules}/>
         { calendar }
       </div>
     )
