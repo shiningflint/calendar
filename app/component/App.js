@@ -3,7 +3,7 @@ import CalendarPage from './Calendar/CalendarPage';
 import SchedulePage from './Schedule/SchedulePage';
 import sortBy from 'lodash.sortby';
 import groupBy from 'lodash.groupby';
-const Dates = [
+var Dates = [
   {
     "date": "2017-05-10",
     "time": "10:00",
@@ -29,29 +29,42 @@ const Dates = [
     "time": "17:00",
     "text": "Play"
   },
-  {
-    "date": "2017-05-06",
-    "time": "10:00",
-    "text": "Go to the immigration office"
-  },
-  {
-    "date": "2016-05-06",
-    "time": "10:00",
-    "text": "Go to the immigration office"
-  },
 ];
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      calendarShow: false,
+    };
+    this.toggleCalendar = this.toggleCalendar.bind(this);
+  }
+
+  toggleCalendar() {
+    this.setState({
+      calendarShow: !this.state.calendarShow,
+    });
   }
 
   render() {
     let dateSorted = sortBy(Dates, (e) => { return e.date })
     let dateReduced = groupBy(dateSorted, (e) => { return e.date });
+    let calendar = "";
+    if (this.state.calendarShow) {
+      calendar = <div className="calendar-page-modal">
+        <CalendarPage/>
+        <img
+          src={require("../assets/plus.svg")}
+          className="calendar-page-close"
+          onClick={this.toggleCalendar}/>
+        </div>
+    } else { calendar = "" }
     return(
-      <div>
-        <SchedulePage dates={ dateReduced }/>
+      <div className="app-wrapper">
+        <SchedulePage
+          dates={ dateReduced }
+          toggleCalendar={this.toggleCalendar}/>
+        { calendar }
       </div>
     )
   }

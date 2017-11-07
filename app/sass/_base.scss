@@ -8,12 +8,19 @@ $jp-font: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Pin
   font-size: 1.414em;
 }
 
+.app-wrapper {
+  position: relative;
+}
+
 // CALENDAR CSS
 $arrow-size: 32px;
 .calendar-page {
   max-width: 640px;
-  margin: 16px auto 0 auto;
+  margin: 0 auto;
   color: #969CAC;
+  background-color: #515765;
+  padding: 16px;
+  border-radius: 4px;
 }
 .calendar-grid,
 .calendar-days-label {
@@ -93,6 +100,25 @@ $arrow-size: 32px;
   height: 100%;
   width: 100%;
   font-size: 20px;
+}
+
+// CALENDAR MODAL
+.calendar-page-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0; bottom: 0; right: 0; left: 0;
+  background-color: rgba(0,0,0,0.8);
+  padding: 16px;
+}
+.calendar-page-close {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  width: 40px;
+  height: 40px;
+  transform: rotate(45deg);
 }
 
 // TIME PICKER

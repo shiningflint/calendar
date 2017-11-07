@@ -10,7 +10,8 @@ function ScheduleAddBtn(props) {
       onMouseUp={removeActive}
       onMouseLeave={removeActive}
       onTouchStart={setActive}
-      onTouchEnd={removeActive}>
+      onTouchEnd={removeActive}
+      onClick={props.toggleCalendar}>
       <img
         src={props.src}
         className="schedule-add-btn__img" />
@@ -34,7 +35,9 @@ class SchedulePage extends React.Component {
     return(
       <div className="schedule-page">
         <h1 className="schedule-title">Schedule</h1>
-        <ScheduleAddBtn src={require("../../assets/plus.svg")}/>
+        <ScheduleAddBtn
+          src={require("../../assets/plus.svg")}
+          toggleCalendar={this.props.toggleCalendar}/>
         <div>
           {days}
         </div>
