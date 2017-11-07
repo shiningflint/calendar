@@ -202,7 +202,15 @@ $arrow-size: 32px;
   border: none;
   width: 100%;
   padding: 4px;
-  border-radius: 4px;
+  background-color: transparent;
+  border-bottom: 1px solid #969CAC;
+  color: #969CAC;
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    color: #969CAC;
+  }
 }
 
 // SET BUTTON
@@ -243,7 +251,7 @@ $arrow-size: 32px;
 // SCHEDULE CARDS
 .schedule-title {
   font-size: 1.999em;
-  color: #d8dce6;
+  color: #969CAC;
   margin-bottom: 32px;
 }
 .schedule-page {
@@ -253,7 +261,7 @@ $arrow-size: 32px;
 .schedule-card {
   position: relative;
   background-color: #61697b;
-  color: #d8dce6;
+  color: #a8b1c5;
   padding: 32px 8px 16px 8px;
   box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.3);
   margin-bottom: 32px;
