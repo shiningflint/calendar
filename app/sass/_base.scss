@@ -213,6 +213,11 @@ $arrow-size: 32px;
   &::placeholder {
     color: #969CAC;
   }
+  &.error {
+    &::placeholder{
+      color: #da7868;
+    }
+  }
 }
 
 // SET BUTTON

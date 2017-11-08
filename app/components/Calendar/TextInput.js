@@ -7,7 +7,7 @@ function TextInput(props) {
         type="text"
         value={props.text}
         onChange={props.updateText}
-        className="text-input"
+        className={"text-input"+ (props.submitError ? " error" : "")}
         placeholder="What schedule will it be?" />
     </div>
   );

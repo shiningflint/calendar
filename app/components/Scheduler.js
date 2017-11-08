@@ -10,16 +10,31 @@ class Scheduler extends React.Component {
     this.state = {
       calendarShow: false,
       dates: JSON.parse(localStorage.getItem("dates")),
+      submitError: false,
     };
     this.toggleCalendar = this.toggleCalendar.bind(this);
     this.submitSchedule = this.submitSchedule.bind(this);
     this.clearSchedules = this.clearSchedules.bind(this);
+    this.validateSchedule = this.validateSchedule.bind(this);
   }
 
   toggleCalendar() {
     this.setState({
       calendarShow: !this.state.calendarShow,
     });
+  }
+
+  validateSchedule(text, date, time) {
+    if (text === "") {
+      this.setState({
+        submitError: true,
+      });
+    } else {
+      this.setState({
+        submitError: false,
+      });
+      this.submitSchedule(text, date, time);
+    }
   }
 
   submitSchedule(text, date, time) {
@@ -55,7 +70,9 @@ class Scheduler extends React.Component {
     let calendar = "";
     if (this.state.calendarShow) {
       calendar = <div className="calendar-page-modal">
-        <CalendarPage submitSchedule = {this.submitSchedule}/>
+        <CalendarPage
+          submitSchedule = {this.validateSchedule}
+          submitError = {this.state.submitError}/>
         <img
           src={require("../assets/plus.svg")}
           className="calendar-page-close"

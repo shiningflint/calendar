@@ -126,7 +126,10 @@ class CalendarPage extends React.Component {
         <ShowTime
           selectedDay={this.state.selectedDay}
           time={String(this.state.hour)+":"+String(this.state.minute)}/>
-        <TextInput text={this.state.text} updateText={this.updateText} />
+        <TextInput
+          text={this.state.text}
+          updateText={this.updateText}
+          submitError={this.props.submitError} />
         <SetTimeDate
           label="Set schedule"
           submitSchedule={this.props.submitSchedule}
