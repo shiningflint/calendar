@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import CalendarToggle from './CalendarToggle';
 import Calendar from './Calendar';
@@ -139,6 +140,11 @@ class CalendarPage extends React.Component {
       </div>
     )
   }
+}
+
+CalendarPage.propTypes = {
+  submitError: PropTypes.bool,
+  submitSchedule: PropTypes.func
 }
 
 export default CalendarPage;

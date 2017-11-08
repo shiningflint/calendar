@@ -1,18 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-class ShowTime extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+function ShowTime(props) {
+  return(
+    <p className="show-time-wrapper">
+      <span className="show-date">{props.selectedDay}</span>
+      <span className="show-time">{props.time}</span>
+    </p>
+  )
+}
 
-  render() {
-    return(
-      <p className="show-time-wrapper">
-        <span className="show-date">{this.props.selectedDay}</span>
-        <span className="show-time">{this.props.time}</span>
-      </p>
-    )
-  }
+ShowTime.propTypes = {
+  selectedDay: PropTypes.string,
+  time: PropTypes.string,
 }
 
 export default ShowTime;

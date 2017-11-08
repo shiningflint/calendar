@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function ToggleItem(props) {
   return(
@@ -34,6 +35,18 @@ function CalendarToggle(props) {
         click={props.click} />
     </div>
   )
+}
+
+CalendarToggle.propTypes = {
+  toggle: PropTypes.string,
+  click: PropTypes.func,
+}
+ToggleItem.propTypes = {
+  label: PropTypes.string,
+  name: PropTypes.string,
+  src: PropTypes.string,
+  toggle: PropTypes.string,
+  click: PropTypes.func,
 }
 
 export default CalendarToggle;

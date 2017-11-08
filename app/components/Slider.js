@@ -1,5 +1,6 @@
-import React from 'react'
-import SliderPlugin from 'react-rangeslider'
+import React from 'react';
+import PropTypes from 'prop-types';
+import SliderPlugin from 'react-rangeslider';
 
 class HorizontalSlider extends React.Component {
   constructor(props) {
@@ -45,4 +46,12 @@ class HorizontalSlider extends React.Component {
   }
 }
 
-export default HorizontalSlider
+HorizontalSlider.propTypes = {
+  max: PropTypes.number,
+  min: PropTypes.number,
+  value: PropTypes.number,
+  change: PropTypes.func,
+  label: PropTypes.string,
+}
+
+export default HorizontalSlider;

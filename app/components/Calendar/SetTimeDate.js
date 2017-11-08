@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { setActive, removeActive } from "../Helpers";
 
 function SetTimeDate(props) {
@@ -17,6 +18,14 @@ function SetTimeDate(props) {
       </button>
     </div>
   )
+}
+
+SetTimeDate.propTypes = {
+  label: PropTypes.string,
+  submitSchedule: PropTypes.func,
+  text: PropTypes.string,
+  date: PropTypes.string,
+  time: PropTypes.string,
 }
 
 export default SetTimeDate;

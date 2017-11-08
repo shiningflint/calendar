@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Slider from '../Slider';
 import { selectAll, maxminNumber } from '../Helpers';
 
@@ -37,6 +38,24 @@ function TimePicker(props) {
         label="Minutes:"/>
     </div>
   )
+}
+
+TimePicker.propTypes = {
+  hour: PropTypes.number,
+  minute: PropTypes.number,
+  maxHour: PropTypes.number,
+  minHour: PropTypes.number,
+  maxMinute: PropTypes.number,
+  minMinute: PropTypes.number,
+  changeHour: PropTypes.func,
+  changeMinute: PropTypes.func,
+  changeSliderHour: PropTypes.func,
+  changeSliderMinute: PropTypes.func,
+}
+
+TimeDisplay.propTypes = {
+  time: PropTypes.number,
+  change: PropTypes.func,
 }
 
 export default TimePicker;

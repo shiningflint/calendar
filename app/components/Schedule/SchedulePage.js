@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ScheduleCard from './ScheduleCard';
 import { setActive, removeActive } from "../Helpers";
 
@@ -64,6 +65,17 @@ class SchedulePage extends React.Component {
       </div>
     )
   }
+}
+
+SchedulePage.propTypes = {
+  dates: PropTypes.object,
+  toggleCalendar: PropTypes.func,
+  clearSchedules: PropTypes.func,
+}
+
+ScheduleAddBtn.propTypes = {
+  src: PropTypes.string,
+  toggleCalendar: PropTypes.func,
 }
 
 export default SchedulePage;

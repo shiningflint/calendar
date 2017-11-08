@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function TextInput(props) {
   return(
@@ -11,6 +12,12 @@ function TextInput(props) {
         placeholder="What schedule will it be?" />
     </div>
   );
+}
+
+TextInput.propTypes = {
+  text: PropTypes.string,
+  updateText: PropTypes.func,
+  submitError: PropTypes.bool,
 }
 
 export default TextInput
