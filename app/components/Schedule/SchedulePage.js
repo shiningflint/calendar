@@ -26,7 +26,7 @@ class SchedulePage extends React.Component {
   }
 
   render() {
-    let days = [];
+    let cards = [];
     let clear_btn = "";
     if (Object.keys(this.props.dates).length === 0) {
       clear_btn = <p className="set-no-text">
@@ -44,7 +44,7 @@ class SchedulePage extends React.Component {
           clear schedules
         </button>
       for (var key in this.props.dates) {
-        days.push(<ScheduleCard
+        cards.push(<ScheduleCard
           key={key}
           date={key}
           schedules={this.props.dates[key]}/>);
@@ -57,7 +57,7 @@ class SchedulePage extends React.Component {
           src={require("../../assets/plus.svg")}
           toggleCalendar={this.props.toggleCalendar}/>
         <div>
-          {days}
+          {cards}
         </div>
         <div className="schedule-clearbtn-wrap">
           { clear_btn }

@@ -7,7 +7,7 @@ import TimePicker from './TimePicker';
 import ShowTime from './ShowTime';
 import SetTimeDate from './SetTimeDate';
 import TextInput from './TextInput';
-import { maxminNumber } from '../Helpers';
+import { maxminNumber, pad } from '../Helpers';
 const minHour = 0;
 const maxHour = 23;
 const minMinute = 0;
@@ -117,7 +117,7 @@ class CalendarPage extends React.Component {
         changeSliderHour={this.changeSliderHour}
         changeSliderMinute={this.changeSliderMinute}/>
     }
-    let time = (String(this.state.hour)+":"+String(this.state.minute));
+    let time = (pad(this.state.hour, 2)+":"+pad(this.state.minute, 2));
     return(
       <div className="calendar-page">
         <CalendarToggle
@@ -126,7 +126,7 @@ class CalendarPage extends React.Component {
         {content}
         <ShowTime
           selectedDay={this.state.selectedDay}
-          time={String(this.state.hour)+":"+String(this.state.minute)}/>
+          time={pad(this.state.hour, 2)+":"+pad(this.state.minute, 2)}/>
         <TextInput
           text={this.state.text}
           updateText={this.updateText}

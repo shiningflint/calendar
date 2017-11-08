@@ -20,4 +20,9 @@ function removeActive(elm) {
   return elm.currentTarget.classList.remove('active')
 }
 
-export { selectAll, maxminNumber, setActive, removeActive };
+function pad(num, size) {
+  var s = "000000000" + num;
+  return s.substr(s.length-size);
+}
+
+export { selectAll, maxminNumber, setActive, removeActive, pad };
