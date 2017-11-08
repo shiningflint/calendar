@@ -26,11 +26,28 @@ class SchedulePage extends React.Component {
 
   render() {
     let days = [];
-    for (var key in this.props.dates) {
-      days.push(<ScheduleCard
-        key={key}
-        date={key}
-        schedules={this.props.dates[key]}/>);
+    let clear_btn = "";
+    if (Object.keys(this.props.dates).length === 0) {
+      clear_btn = <p className="set-no-text">
+          No schedules set, <br/>hit the plus button to add one.
+        </p>
+    } else {
+      clear_btn = <button
+          className="set-button"
+          onMouseDown={setActive}
+          onMouseUp={removeActive}
+          onMouseLeave={removeActive}
+          onTouchStart={setActive}
+          onTouchEnd={removeActive}
+          onClick={this.props.clearSchedules}>
+          clear schedules
+        </button>
+      for (var key in this.props.dates) {
+        days.push(<ScheduleCard
+          key={key}
+          date={key}
+          schedules={this.props.dates[key]}/>);
+      }
     }
     return(
       <div className="schedule-page">
@@ -42,16 +59,7 @@ class SchedulePage extends React.Component {
           {days}
         </div>
         <div className="schedule-clearbtn-wrap">
-          <button
-            className="set-button"
-            onMouseDown={setActive}
-            onMouseUp={removeActive}
-            onMouseLeave={removeActive}
-            onTouchStart={setActive}
-            onTouchEnd={removeActive}
-            onClick={this.props.clearSchedules}>
-            clear schedules
-          </button>
+          { clear_btn }
         </div>
       </div>
     )
