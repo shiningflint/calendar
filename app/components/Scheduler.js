@@ -58,10 +58,13 @@ class Scheduler extends React.Component {
   }
 
   clearSchedules() {
-    localStorage.removeItem("dates");
-    this.setState({
-      dates: [],
-    });
+    let a = confirm("All schedule data will be lost. Clear all schedules?");
+    if (a === true) {
+      localStorage.removeItem("dates");
+      this.setState({
+        dates: [],
+      });
+    } else { return }
   }
 
   render() {
