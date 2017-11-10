@@ -11,7 +11,8 @@ var config = {
   module: {
     rules: [
       { test: /\.(js)$/, use: 'babel-loader' },
-      {test: /\.(jpe?g|png|gif|svg)$/i, loader: 'file-loader?name=assets/[name].[ext]'},
+      { test: /\.(jpe?g|png|gif|svg|ico)$/i, loader: 'file-loader?name=assets/[name].[ext]' },
+      { test: /manifest\.json$/, loader: 'file-loader?name=assets/[name].[ext]' },
       { test: /\.css$/, use: ['style-loader', 'css-loader'] },
     ]
   },
