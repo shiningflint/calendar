@@ -1,6 +1,7 @@
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
+var ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 
 var config = {
   entry: './app/index.js',
@@ -18,6 +19,10 @@ var config = {
   },
   plugins: [new HtmlWebpackPlugin({
     template: 'app/index.html'
+  }),
+  new ServiceWorkerWebpackPlugin({
+    entry: path.join(__dirname, 'app/serviceworker.js'),
+    excludes: ['**/.*', '**/*.map', '*.html'],
   })],
   devServer: {
     historyApiFallback: true

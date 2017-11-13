@@ -44,6 +44,7 @@
     "moment": "^2.19.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-rangeslider": "^2.2.0"
+    "react-rangeslider": "^2.2.0",
+    "serviceworker-webpack-plugin": "^0.2.3"
   }
 }
